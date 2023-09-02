@@ -1,0 +1,26 @@
+body {
+    height: 100vh;
+    width: auto;
+    background: rgb(82,9,121);
+    background: linear-gradient(0deg, rgba(82,9,121,1) 0%, rgba(64,2,105,1) 42%, rgba(22,2,48,1) 100%);
+  }
+.letras{
+    color: white;
+    font-size: 1.5vw;
+}
+
+.links{
+    text-decoration: none;
+    color: black;
+}
+
+.iconos-posicion{
+    position: relative;
+    top: 6px;
+}
+.color-fondo{
+    position: absolute;
+    bottom: 0vw;
+    width: 100%;
+    z-index: 9;
+}

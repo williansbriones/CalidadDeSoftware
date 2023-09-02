@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crear Producto</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .producto-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Crear Producto</h2>
+    <form id="formularioCrearProducto">
+        <input type="text" id="txtNombre" placeholder="Nombre del producto" required>
+        <input type="text" id="txtDescripcion" placeholder="Descripción del producto" required>
+        <input type="number" id="txtPrecio" placeholder="Precio del producto" required>
+        <button type="submit">Crear</button>
+    </form>
+
+    <div id="listaProductos"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#formularioCrearProducto').submit(function (event) {
+                event.preventDefault(); 
+
+                var nombre = $('#txtNombre').val();
+                var descripcion = $('#txtDescripcion').val();
+                var precio = $('#txtPrecio').val();
+
+                
+                $.ajax({
+                    url: 'api/productos', 
+                    method: 'post',
+                    data: {
+                        nombre: nombre,
+                        descripcion: descripcion,
+                        precio: precio
+                    },
+                    success: function (producto) {
+                        crearTarjetaProducto(producto);
+
+                        $('#formularioCrearProducto')[0].reset();
+                    },
+                    error: function () {
+                        alert('Error al crear el producto');
+                    }
+                });
+            });
+        });
+
+        function crearTarjetaProducto(producto) {
+            var tarjetaProducto = $('<div>').addClass('producto-card');
+            tarjetaProducto.append($('<h3>').text(producto.nombre));
+            tarjetaProducto.append($('<p>').text(producto.descripcion));
+            tarjetaProducto.append($('<p>').text('Precio: $' + producto.precio));
+
+            $('#listaProductos').prepend(tarjetaProducto);
+        }
+    </script>
+</body>
+
+</html>

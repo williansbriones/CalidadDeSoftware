@@ -1,0 +1,248 @@
+*{
+  color: whitesmoke;
+}
+/* Estilo del body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(../img_perfil_ususario/rm251-mind-01.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%; 
+}
+
+/* Estilo de los contenedores */
+.container {
+  display: flex;
+  justify-content:space-between;
+
+  
+
+}
+/* pense que me serviria, queda en veremos..
+.container > div {
+  flex-basis: 45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+*/
+
+/* Estilo del formulario 1 */
+.rew_1 {
+
+  position: relative;
+  background-color: #643579;
+  border-radius: 20px;
+  height: 430px;
+  width: 350px;
+  text-align: center;
+  border: 3px solid white;
+  margin-left: 20%;
+  
+  
+}
+
+/* Estilo del formulario 2 */
+.rew_2 {
+  background-color: #643579;
+  border-radius: 20px;
+  justify-content: center;
+  text-align: center;
+  width: 350px;
+  height: 650px;
+  border: 3px solid white;
+  margin-left: 20%;
+  
+}
+
+.tamaño-usuario{
+  position: relative; padding: 0; width: 200px;
+}
+
+input{
+  color: whitesmoke;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  background: none;
+  border-bottom: 2px solid silver;
+}
+/*diseño deñ boton */
+button{
+  border:0; 
+  background-image: linear-gradient(
+      150deg,
+      #9500ff,
+      #09ff,
+      #0df);
+      border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  padding: 4px;
+  cursor:pointer;
+  transition: .3s;
+  /* me sirvio para centrar los botones*/
+  float: none;
+  margin-left: 36%;
+}
+
+button span{
+  background-color: #111;
+  padding: 16px  24px;
+  border-radius: 6px;
+  transition: .3s; 
+
+}
+
+button:hover span{
+  background: none;
+
+}
+
+button:active{
+  transform: scale(0.9);
+}
+
+.boton{
+  position: relative;
+
+  width: 100px;
+  border-radius: 5px;
+
+}
+
+
+/*titulo*/
+h1{
+  color: #fff;
+}
+
+label{
+  color: #fff;
+}
+
+.avatar{
+
+  height: 500px;
+  width: 500px;
+}
+
+a{
+  color:#fff
+}
+
+label{
+  font-size:large;
+}
+
+
+
+@media (max-width: 1037px){
+  .rew_2{
+     margin: 0;
+  }
+
+  .rew_1{
+     margin: 0;
+  }
+}
+
+@media (max-width: 748px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 200px;
+  }
+  .rew_2{
+     margin-left: 200px;
+  }
+
+}
+
+@media (max-width: 730px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 150px;
+  }
+  .rew_2{
+     margin-left: 150px;
+  }
+
+}
+
+@media (max-width: 630px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 100px;
+  }
+  .rew_2{
+     margin-left: 100px;
+  }
+
+}
+
+@media (max-width: 529px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 50px;
+  }
+  .rew_2{
+     margin-left: 50px;
+  }
+
+}
+@media (max-width: 465px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 20px;
+  }
+  .rew_2{
+     margin-left: 20px;
+  }
+
+}
+
+@media (max-width: 394px){
+
+  .rew_1{
+     margin-top: 330px;
+     margin-left: 0px;
+  }
+  .rew_2{
+     margin-left: 0px;
+  }
+
+}
+
+.boton {
+  border: 0;
+  background-image: linear-gradient(150deg, #9500ff, #09ff, #0df);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  padding: 4px;
+  cursor: pointer;
+  transition: .3s;
+  float: none;
+  margin-left: 0%;
+  text-decoration: none; /* Agrega esto para quitar la decoración de subrayado del enlace */
+}
+
+.boton:hover {
+  background-image: linear-gradient(150deg, #9500ff, #09ff, #0df);
+}
+
+.boton:active {
+  transform: scale(0.9);
+}
+
+

@@ -1,0 +1,126 @@
+/* Estilos globales para todos los elementos */
+* {
+  color: whitesmoke; /* Color del texto */
+  margin: 0; /* Margen exterior */
+  padding: 0; /* Relleno interno */
+}
+
+/* Estilos del cuerpo de la página */
+body {
+  display: flex; /* Utiliza un modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Altura del cuerpo igual al 100% de la ventana */
+  background-image: url(../img_perfil_ususario/rm251-mind-01.jpg); /* Imagen de fondo */
+  background-repeat: no-repeat; /* No repetir la imagen de fondo */
+  background-attachment: fixed; /* Fondo fijo en la ventana */
+  background-size: cover; /* Ajustar imagen de fondo al tamaño */
+  background-position: center; /* Posición central de la imagen de fondo */
+}
+
+/* Estilos de las filas */
+.row {
+  display: flex; /* Utiliza un modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+/* Estilos de las columnas */
+.col {
+  width: 50%; /* Ancho del 50% */
+}
+
+/* Estilos para el formulario 1 */
+.rew_1 {
+  position: relative; /* Posición relativa */
+  background-color: #643579; /* Color de fondo */
+  border-radius: 20px; /* Borde redondeado */
+  width: 350px; /* Ancho de 350px */
+  text-align: center; /* Alineación del texto al centro */
+  border: 3px solid black; /* Borde de 3px sólido negro */
+  padding: 20px; /* Relleno interno */
+}
+
+/* Estilos para el tamaño del usuario */
+.tamaño-usuario {
+  position: relative; /* Posición relativa */
+  padding: 0; /* Relleno interno */
+  width: 100%; /* Ancho del 100% */
+}
+
+/* Estilos para los campos de entrada */
+input {
+  outline: none; /* Sin contorno al hacer clic */
+  border-radius: 0; /* Sin borde redondeado */
+  border: none; /* Sin borde */
+  background: none; /* Sin fondo */
+  border-bottom: 2px solid silver; /* Borde inferior de 2px sólido plateado */
+  color: whitesmoke; /* Color del texto */
+  margin-bottom: 10px; /* Margen inferior */
+  width: 100%; /* Ancho del 100% */
+  padding: 5px; /* Relleno interno */
+}
+
+/* Estilos para los botones */
+button {
+  border: 0; /* Sin borde */
+  background-image: linear-gradient(150deg, #9500ff, #09ff, #0df); /* Imagen de fondo con degradado */
+  border-radius: 15px; /* Borde redondeado */
+  color: #fff; /* Color del texto */
+  font-size: 18px; /* Tamaño de fuente */
+  padding: 8px 16px; /* Relleno interno */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  transition: .3s; /* Transición de animación */
+  width: 100%; /* Ancho del 100% */
+  margin-top: 10px; /* Margen superior */
+}
+
+/* Estilos para el span dentro de los botones */
+button span {
+  background-color: #111; /* Color de fondo */
+  padding: 16px 24px; /* Relleno interno */
+  border-radius: 15px; /* Borde redondeado */
+  transition: .3s; /* Transición de animación */
+}
+
+/* Estilos al pasar el cursor por encima del span dentro de los botones */
+button:hover span {
+  background: none; /* Sin fondo */
+}
+
+/* Estilos al hacer clic en los botones */
+button:active {
+  transform: scale(0.9); /* Escala del 90% */
+}
+
+/* Estilos para los encabezados h1 */
+h1 {
+  color: #fff; /* Color del texto */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilos para las etiquetas de texto */
+label {
+  color: #fff; /* Color del texto */
+  margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos para el contenedor de botones */
+.button-container {
+  display: flex; /* Utiliza un modelo de caja flexible */
+  justify-content: space-between; /* Espacio equitativo entre los elementos */
+  margin-top: 20px; /* Margen superior */
+  
+}
+
+/* Estilos para los botones dentro del contenedor de botones */
+.button-container button {
+  flex-basis: 48%; /* Tamaño del 48% */
+  border-radius: 15px;
+}
+
+/* Estilos para la imagen de perfil */
+.profile-image {
+  max-width: 100px; /* Ancho máximo de 100px */
+  max-height: 100px; /* Altura máxima de 100px */
+}

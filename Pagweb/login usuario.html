@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="includes/css/login usuario.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+<body>
+    <!-- <img class="avatar" src="includes/images/Index/icono.png" alt="logo proyecto"> -->
+    <div class="container-xl contenedor-grande">
+        <div class="row ">
+            <div  class="col tamaño-usuario" >
+                <div class="rew_1">
+                    <!-- Formulario 1 -->
+                    <div class="form-container">
+                        
+                            <div id="login_usuario_registrado">
+                                <h1 style="color: whitesmoke;">Iniciar session </h1>
+                                <!--usuario-->
+                                <br>
+                                <label for="usuario">Nombre Usuario</label>
+                                <br>
+                                <input id="usuario" type="text" placeholder="Ingrese email">
+                                <br>
+                                <br>
+                                <!--contraseña-->
+                                <label for="clave">Clave Usuario</label>
+                                <br>
+                                <input id="clave" type="password" placeholder="Ingrese Clave">
+                                <br>
+                                <br>
+                                <!--boton-->
+                                <button class="boton" id="iniciosesion">Ingresar</button>
+                                <br>
+                                <br>
+                                <a href="log-trabajador.html" class="boton" id="iniciosesiontraba">Colaborador</a>
+                                <br>
+                                <br>
+                                <a href="miss_pass.html" style="color: whitesmoke;" id="ayuda_contraseña">Olvide mi clave </a> 
+                                
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="rew_2">
+                    <!-- Formulario 2-->
+                    <div class="form-container">
+                        <h1 style="color: white;">Registrate</h1>
+                        <label for="usuario2">Nombre</label>
+                        <br>
+                         <input id="nombre" type="text" placeholder="ej: Sergio ">
+                        <br>
+                        <br>
+                        <label for="usuario2">Apellido</label>
+                        <br>
+                        <input id="apellido" type="text" placeholder="ej: Mellado Salazar">
+                        <br>
+                        <br>
+                        <label for="correo">Correo</label> 
+                        <br>
+                        <input id="correo_registro" type="text" placeholder="ej: serg.mellado@gmail.com"> 
+                        <br>
+                        <br>
+                        <label for="contraseña">Contraseña</label>
+                        <br>
+                        <input id="clave_registro" type="password" placeholder="ej: *******">
+                        <br>
+                        <br>
+                        <label for="direccion">Direccion</label>
+                        <br>
+                        <input id="direccion" type="direccion" placeholder="ej: Pasaje I 3756">
+                        <br>
+                        <br>
+                        <label for="comuna">Comuna</label>
+                        <br>
+                        <input id="comuna" type="contraseña" placeholder="ej: Huechuraba">
+                        <br>
+                        <br>
+                        <label for="telefono">telefono</label>
+                        <br>
+                        <input id="telefono_registro" type="contraseña" placeholder="ej: 953454245">
+                        <br>
+                        <br>
+                        <button id="registrar_usuario" class="boton" >Registrarse</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="includes/scripts/sweetalert2.all.min.js" type="text/javascript"></script>
+        <script src="includes/scripts/jquery.js" type="text/javascript"></script>
+        <script src="includes/scripts/Login.js" type="text/javascript"></script>
+    </body>
+</html>

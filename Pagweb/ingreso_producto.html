@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<link href="includes/css/ingreso_producto.css" rel="stylesheet" type="text/css"/>
+<div class="body-content">
+  <div class="module">
+    <h1>Create an account</h1>
+    <form class="form" method="post" enctype="multipart/form-data" autocomplete="off">
+      <div class="alert alert-error"></div>
+        <select id="tipo" name="Tipo de producto">
+            <option>1 - mause </option>
+        
+            <option>2 - Notebook</option>
+        
+            <option>3 - Tarjeta de video</option>
+            
+            <option>4 - Pc</option>
+        
+            <option>5 - Monitor</option>
+        
+            <option>6 - tablet</option>
+
+            <option>7 - taclado</option>
+        
+            <option>8 - otros</option>
+        </select>
+        <input id="nombre_producto" type="text" placeholder="nombre producto" name="producto" required />
+        <textarea id="caracteristicas" name="caracteristicas" rows="10" cols="40"  placeholder="caracteristicas producto"></textarea>
+        <input id="precio" type="text" placeholder="precio producto" name="producto" required />
+        <input class="avatar" type="file" id="imagen1" accept="image/*">
+        <input class="avatar" type="file" id="imagen2" accept="image/*">
+        <input class="avatar" type="file" id="imagen3" accept="image/*">
+        <input class="avatar" type="file" id="imagen4" accept="image/*">
+        <input class="avatar" type="file" id="imagen5" accept="image/*">
+
+        <input id="agregar"  value="Agregar producto" name="register" class="btn btn-block btn-primary" />
+    </form>
+  </div>
+</div>
+<script src="includes/scripts/jquery.js" type="text/javascript"></script>
+<script src="includes/scripts/agregar_producto.js" type="text/javascript"></script>
+</body>
+</html>
+

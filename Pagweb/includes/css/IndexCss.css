@@ -1,0 +1,524 @@
+
+body{
+    background: rgb(82,9,121);
+    background: linear-gradient(0deg, rgba(82,9,121,1) 0%, rgba(64,2,105,1) 42%, rgba(22,2,48,1) 100%);
+}
+
+/* bloque que indicara que se añadio un elemento al carro de compras */
+
+
+
+.anuncio-bloque{
+    position: fixed;
+    background-color: #A569BD;
+    border-radius: 5px;
+    width: 300px;
+    height: 150px;
+    z-index: 10;
+    top: 15%;
+    right: 40%;
+    transform: translate(50%,-50%);
+    opacity: 0.8;
+    border: 3px solid whitesmoke ;
+    display: none;
+}
+
+.barra-carga{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #512E5F;
+    width: 0;
+    height: 10px;
+}
+.cerra{
+    cursor: pointer;
+}
+
+/* palabras que tendran un texto el cual estara animado */
+
+.palabras{
+    flex: 1;
+    color: aliceblue;
+    position: absolute;
+    width: 97vw;
+    font-size: 130%;
+    white-space: nowrap;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Titulo', sans-serif;
+}
+.pantalla-pequeña{
+    display: none;
+}
+
+/* parte superior de la pagina en donde se encuentran el icono, 
+el buscador, el perfin y el carrito de compras */
+
+.fondo2{
+        background: rgb(82,9,121);
+        background: linear-gradient(180deg, rgba(82,9,121,1) 0%, rgba(64,2,105,1) 42%, rgba(22,2,48,1) 100%);
+    width: 100%;
+    height: 390px;
+}
+.icono{
+    width: 60px;
+}
+.icono img{
+    width: 50px;
+    margin-top: 10px;
+}
+.buscador{
+    width: 50vw;
+}
+.buscador input{
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border: 5px solid #643579;
+    padding: 0 20px;
+}
+.perfil{
+    flex: 1;
+}
+.perfil img{
+    padding-top: 4px;
+    width:40px;
+    margin-top: 10px;
+    overflow: hidden;
+    flex-flow: row-reverse;
+    position: relative;
+    align-items: center;
+    
+}
+.textocarro{
+    color: white;
+    outline: none;
+    text-decoration: none;
+    position: relative;
+    top: 7%;
+    padding-left: 13%;
+}
+.textoPerfin{
+    padding-right: 6px;
+    color: white;
+    outline: none;
+    text-decoration: none;
+    position: relative;
+    top: 7%;
+}
+
+/* Botones que se encuentran que se encuentran bajo el texto de bienvenida */
+
+.opciones{
+    margin-bottom: 5%;
+}
+
+
+.botones-value {
+    position: relative;
+    border: 3px solid black;
+    font-size: 100%;
+    padding: 5% 30%;
+    border-radius: 3em;
+    background-color: #F5EDF7;
+    color: #3D1860;
+    cursor: pointer;
+}
+.opciones a{
+    outline: none;
+    text-decoration: none;
+  }
+
+/* animacion de botones */
+.boton-animacion:active{
+    transform: scale(0.8);
+}
+
+/* imagen que se encuentra al lado de el carrucel */
+
+.carrusel{
+    background: rgb(82,9,121);
+    background: linear-gradient(0deg, rgba(82,9,121,1) 0%, rgba(64,2,105,1) 42%, rgba(22,2,48,1) 100%);
+    position: relative;
+    padding-top: 1%;
+    padding-left: 2%;
+    max-height: 40vw;  /* es posible que con el max-height pueda desajustar algo con el tema del carrusel tener ojo */
+
+    
+}
+
+.carrusel img{
+    width: 100%;
+    height: 67%;
+    border-radius: 5%;
+}
+
+/* seccion de productos*/
+
+.productos{
+    background: rgb(82,9,121);
+    background: linear-gradient(180deg, rgba(82,9,121,1) 0%, rgba(64,2,105,1) 42%, rgba(22,2,48,1) 100%);
+    user-select: none;
+}
+.titulo{
+    color: whitesmoke;
+}
+.marco-producto{
+    width: 170px;
+    height:max-content;
+    background-color: #643579;
+    margin: 0% 0.5%;
+    margin-bottom: 4%;
+    border-radius: 2%;
+}
+.marco-producto img{
+    position: relative;
+    align-items: center;
+    margin-top: 5%;
+    border-radius: 2%;
+}
+.marco-producto .descripcion-producto{
+    margin: 0;
+    color: white;
+}
+.marco-producto h6{
+    padding-bottom: 5px;
+}
+
+.marco-producto a{
+    outline: none;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+/* parte final de la pagina con iconos y texto con indicaciones */
+.color-fondo{
+    background: black;
+}
+.seccion-final a{
+    outline: none;
+    text-decoration: none;
+    color: #F5EDF7;
+}
+.seccion-final{
+    color: #F5EDF7;
+    background: black;
+    position: relative;
+    padding-top: 20px;
+}
+.seccion-final img{
+    position:relative;
+    width: 20px;
+    top: -2px;
+}
+
+/* Botones para agregar productos */
+.bloque-agregar{
+    height: auto;
+    width: 150px;
+    position: absolute;
+    display: block;
+}
+.agregar-producto{
+    position: absolute;
+    z-index: 1;
+    background: mediumslateblue;
+    width:100px;
+    height: 70px;
+    margin-left: 23px;
+    margin-top:20px;
+    border-radius: 4px;
+    border: 2px solid black;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+}
+.agregar-producto:active{
+    transform: scale(0.8);
+}
+.agregar-producto h6{
+    font-size: 17px;
+    color: black;
+    user-select: none;
+}
+
+.carrusel-text{
+    color:darkgray;
+    position: absolute;
+    top: 70%;
+    margin-left: 3vw;
+    font-size: 3.5vw;
+    margin-right: 3vw;
+}
+.decoracion-text-carrusel{
+    font-family:'Carrusel';
+    letter-spacing: 0.5px;
+}
+.carrusel-text:after{
+    content: "";
+    position: absolute;
+    background-color: #A569BD;
+    height: 3px;
+    width: 0%;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+
+.carrusel-text:hover{
+    color:#F5EDF7;
+}
+
+.carrusel-text:hover:after{
+    width: 93%;
+}
+#cerrar_sesion{
+    top: 1%; 
+    right: 4%; 
+    position: absolute;
+}
+/*ajustes de pantalla para cuando esta sea mas pequeña para el tema de el perfi, buscador, carro de compra y icono*/
+
+
+@media (max-width: 1172px){
+    #cerrar_sesion{
+        top: 1;
+        right: 1;
+        position:relative;
+    }
+    .perfil{
+        flex: 1;
+    }
+    .perfil img{
+        width:40px;
+        margin-top: 10px;
+        overflow: hidden;
+        flex-flow: row-reverse;
+        position: relative;
+        align-items: center;
+        
+    }
+    .textocarro{
+        color: black;
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        top: 7%;
+        padding-left: 5%;
+    }
+    .textoPerfin{
+        color: black;
+        outline: none;
+        text-decoration: none;
+        position: relative;
+        top: 7%;
+    }
+
+}
+
+@media (max-width: 1161px){
+    #cerrar_sesion{
+        top: 1;
+        right: 1;
+    }
+    .perfil{
+        flex: 0;
+    }
+    .perfil img{
+        width:40px;
+        margin-top: 10px;
+        overflow: hidden;
+        flex-flow: row-reverse;
+        position: relative;
+        align-items: center;
+        
+    }
+    .textocarro{
+       display: none;
+    }
+    .textoPerfin{
+        display: none;
+    }
+    .buscador{
+        width: 50vw;
+        flex: 1;
+    }
+    .buscador input{
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+        height: 50px;
+        border-radius: 20px;
+        border: 5px solid #643579;
+        padding: 0 20px;
+    }
+    .icono img{
+        width: 50px;
+        margin-top: 20px;
+    }
+    .espacio{
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .pantalla-grande{
+        display: none;
+    } 
+    .pantalla-pequeña{
+        display: block;
+    }
+}
+
+  @media (max-width: 600px) {
+    .perfil img{
+        width:40px;
+        margin-top: 10px;
+        overflow: hidden;
+        flex-flow: row-reverse;
+        position: relative;
+        align-items: center;
+    }
+    .textocarro{
+        display: none;
+    }
+    .textoPerfin{
+        display: none;
+    }
+    .buscador input{
+        margin-top: 20px;
+        width: 100%;
+        height: 100%;
+        height: 50px;
+        border-radius: 20px;
+        border: 5px solid #643579;
+        padding: 0 20px;
+    }
+    .icono img{
+        width: 50px;
+        margin-top: 20px;
+    }
+    .espacio{
+        display: none;
+    }
+  }
+  .bloque-izquierdo{
+    display: none;
+}
+
+
+  /* Parte de los botones para ajustarlo a las pantallas mas pequeñas */
+
+  @media (max-width: 1015px){
+
+    .texto-boton{
+        display: none;
+    }
+
+  }
+
+
+  @media (max-width: 748px){
+    .botones-value {
+        position: relative;
+        border: 2px solid #643579;
+        font-size: 100%;
+        padding: 5% 40%;
+        border-radius: 3em;
+        background-color: #F5EDF7;
+        color: #3D1860;
+        cursor: pointer;
+    }
+
+    .fondo2{
+        background-color: #3D1860;
+        width: 100%;
+        height: 320px;
+    }
+    
+}
+
+ @media(max-width: 566px){
+    .bloque-izquierdo{
+        display: block;
+        width: 15vw;
+    }
+    .productos-block{
+        width: 380px;
+
+    }
+} 
+ 
+
+
+@media (max-width: 519px){
+    .botones-value {
+        position: relative;
+        border: 2px solid #643579;
+        font-size: 100%;
+        padding: 5% 40%;
+        border-radius: 3em;
+        background-color: #F5EDF7;
+        color: #3D1860;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 448px){
+    .botones-value {
+        position: relative;
+        border: 2px solid #643579;
+        font-size: 100%;
+        padding: 5% 10%;
+        border-radius: 3em;
+        background-color: #F5EDF7;
+        color: #3D1860;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 402px){
+    .botones-value {
+        position: relative;
+        border: 2px solid #643579;
+        font-size: 100%;
+        padding: 5% 30%;
+        border-radius: 3em;
+        background-color: #F5EDF7;
+        color: #3D1860;
+        cursor: pointer;
+    }
+    .opciones{
+        margin-bottom: 10%;
+    }
+}
+
+@media(max-width: 384px){
+    .bloque-izquierdo{
+        display: none;
+    }
+    .productos-block{
+        width: auto;
+    }
+    .marco-producto{
+        width: 163px;
+}}
+/* revisar arreglar para telefonos ultra pequeños*/
+
+/* fuentes */
+@font-face {
+    font-family: 'Titulo';
+    src: url('../font/BrunoAceSC-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Carrusel';
+    src: url(../font/FjallaOne-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

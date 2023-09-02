@@ -1,0 +1,126 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>compras</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="includes/css/carro_compras.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="icon" type="image/png" href="includes/images/Index/icono.png">
+<body>
+    <br>
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <a href="index.html">
+                    <span class="material-symbols-outlined" style="color: whitesmoke; font-size: 35px;">
+                        arrow_back
+                    </span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <h1 style="color: aliceblue;">carro (<span id="total-item">0</span>) item</h1>
+        </div>
+        <div id="bloque_productos" class="row">
+            
+            <div style="width: 100%;" id="bloque_pago" class="col-12 compra">
+                <div class="compras-cuadro">
+                    <h4 style="padding-left: 5%; color: whitesmoke;">resumen (<span id="total-item1" >0</span> productos)</h4>
+                    <hr class="linea">
+                    <span id="str-pago" class="pago"> </span> <h6 style="padding-left: 5%; color: whitesmoke;">pago a realizar: <button id="boton-cupon" class="boton-cupon"> Cupon</button></h6> </span>
+                    <span id="int-pago" class="pago" ></span> <h6 style="padding-left: 5%; color: whitesmoke;"><span id="total-sin-descuento">0</span></h6> </span>
+                    <span id="int-pago" class="pago" ></span> <h6 style="padding-left: 5%; color: whitesmoke;"><span id="descuento">0</span></h6> </span>
+                    <span id="int-pago" class="pago" ></span> <h6 style="padding-left: 5%; color: whitesmoke;"><span id="total-compra1">0</span></h6> </span>
+                    <hr class="linea">
+                    <div id="bloque_credito">
+                        <div class="bloques-compras">
+                            <span id="despliegue-credito"> Tarjeta de credito <img style="width: 40px;" src="includes/images/carro_compras/MasterCard_Logo.svg.png" alt=""> </span>
+                            <span id="boton-credito" class="icon-cre material-symbols-rounded">
+                                expand_more
+                            </span>
+                            <div id="caja-pago">
+                                <h4 style="color: whitesmoke; margin-left: 5%;">
+                                    Numero tarjeta
+                                    <!-- bloque ayuda numero de tarjeta -->
+                                    <span id="bloque-ayuda-num" class="bloque-ayuda">
+                                        <img style="width: 90%; margin-top: 5%; margin-left: 5%;" src="includes/images/carro_compras/Numeros-mastercard-cvv.jpg" alt="">
+                                    </span>
+                                    <span id="ayuda-num" style="position: relative; top: 3px;" class="material-symbols-outlined ayuda">
+                                        info
+                                    </span>
+                                </h4>
+                                <input style="margin-left: 5%; border-radius: 5px; width: 145px;" type="text" placeholder="xxxx-xxxx-xxxx-xxxx">
+    
+                                <h4 style="color: whitesmoke; margin-left: 5%; margin-top: 5px;">
+                                    Fecha
+                                    <!-- bloque ayuda fecha-->
+                                    <span id="bloque-ayuda-fecha" class="bloque-ayuda">
+                                        <img style="width: 90%; margin-top: 5%; margin-left: 5%;" src="includes/images/carro_compras/carro_compras.png" alt="">
+                                    </span>
+                                    <span id="ayuda-fecha" style="position: relative; top: 3px;" class="material-symbols-outlined ayuda">
+                                        info
+                                    </span>
+                                </h4>
+                                <input style="margin-left: 5%; border-radius: 5px; width: 70px;" type="text" placeholder="04/2023">
+                                <h4 style="color: whitesmoke; margin-left: 5%; margin-top: 5px;">
+                                    CVV
+                                    <!-- bloque ayuda cvv -->
+                                    <span id="bloque-ayuda-cvv" class="bloque-ayuda">
+                                        <img style="width: 90%; margin-top: 5%; margin-left: 5%;" src="includes/images/carro_compras/ayudacvv.png" alt="">
+                                    </span>
+                                    <span id="ayuda-cvv" style="position: relative; top: 3px;" class="material-symbols-outlined ayuda">
+                                        info
+                                    </span>
+                                </h4>
+                                <input style="margin-left: 5%; border-radius: 5px; width: 35px;" type="text" placeholder="xxx">
+                                <br>
+                                <button id="pago_credito" class="boton-compra">Pagar</button>
+                                <hr class="linea">
+                                
+                            </div>
+                        </div> 
+                    </div>
+                    <hr style="display: none;" id="barra1" class="linea">
+                    <div id="bloque_paypal">
+                        <div class="bloques-compras">
+                            <span style="margin-left: 4%;">Pago Paypal <img style="width: 40px;" src="includes/images/carro_compras/paypal.png" alt=""> </span>
+                            <span id="boton-paypal" class="icon-despliegue material-symbols-rounded">
+                                expand_more
+                            </span>
+                        </div>
+                    <div id="paypal-bloque">
+                        <a href="#" class="direccion btn btn-primary btn-lg active" role="button" aria-pressed="true">Pagar compra</a>
+                    </div>
+                    </div>
+                    <hr style="display: none;" id="barra1" class="linea">
+                    <div style=" user-select: none;" class="boton-animacion boton1">
+                        <botones class="botones-value" >
+                            <span class="material-symbols-outlined" style="top: 5px; position: relative;">
+                                attach_money
+                            </span> 
+                            <span class="texto-boton">Comprar</span>
+                        </botones>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+
+        </div>
+
+    </section>
+    <script src="includes/scripts/jquery.js"></script>
+    <script src="includes/scripts/sweetalert2.all.min.js" type="text/javascript"></script>
+    <script src="includes/scripts/carro_compras.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</body>
+</html>

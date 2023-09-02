@@ -1,0 +1,100 @@
+.foto-perfil{
+    /*para redondear la imgen y darle color al borde*/
+    border-radius: 45px;
+    border:4px solid #fff;
+    /*para centar la imagen */
+    display: block;
+    margin: auto;
+}
+
+#boton_actualizacion{
+    border: none; 
+    background-image: linear-gradient(150deg, #9500ff,#09ff,#0df); font-size: larger;
+    border-radius: 50px; height: 50px; 
+    position:fixed; 
+    right: 5%; 
+    z-index: 10;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#boton_actualizacion:active{
+    transform: scale(0.8);
+}
+body{
+    /*propiedades de la imagen de fondo*/
+    height: 100vh;
+    background-image: url(../img_perfil_ususario/rm251-mind-11-f.jpg);
+    background-repeat: no-repeat;
+}
+
+/*este es el estilo de los botones */
+.btn-editar,.btn-entrega-1,.btn-entrega-2,.btn-entrega-3,.btn-entrega-4,.bnt-micompra,
+.btn-cancelar-pedido,.button-ayuda {
+    border:2 solid black; 
+    background-image: linear-gradient(150deg, #9500ff,#09ff,#0df);
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 4px;
+    cursor:pointer;
+    transition: .3s;
+    ;
+
+}
+
+#panelsStayOpen-collapseTwo{
+    color: #fff;
+}
+ .p{
+    background-color: black;
+ }
+/*acordeon  principal*/
+ .accordion-body{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(135deg, #8EC5FC 0%, #E0C3FC 60%);   
+    border-radius: 6px solid #fff; 
+ }
+
+ /*.span{
+    font-size: 20px; color: #67e45e;
+    font-weight: bold; 
+    border-color: black;
+
+ }
+*/
+ .accordion-body-2{
+    background-image: linear-gradient( 135deg, #FFF5C3 10%, #9452A5 100%);
+
+
+ }
+
+ .accordion-button {
+    background-color: #FF3CAC;
+    background-image: linear-gradient(26deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+ }
+
+ .parrafo{
+    color: black;
+ }
+.titulos-desplegables{
+    color:#fff;
+    font-weight: bold;
+    font-size: 24px;
+
+
+}
+.titulos-desplegables-span{
+    color:red;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.vali_nombre{
+    display: none;
+    color: red;
+}
+
+.validadores{
+    display: none;
+    color: red;
+}
