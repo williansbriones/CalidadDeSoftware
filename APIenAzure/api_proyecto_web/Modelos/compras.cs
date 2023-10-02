@@ -13,9 +13,9 @@ namespace api_proyecto_web.Modelos
         public DateTime Fecha_compra { get; set; }
         public DateTime Fecha_entrega { get; set; }
         public EstadoCompra Estado_compra { get; set; }
-        public Cupon cupon { get; set; }
+        public int cupon = 0;
         public int Total => lista_productos.Sum(x => x.precio * x.cantidad);
-        public int Descuento => (int)(Total * (cupon.CantidadDesuento/100.000));
+        public int Descuento => (int)(Total * cupon);
         public int SubTotal => Total - Descuento;
         public int CantidadProductos => this.lista_productos.Sum(x => x.cantidad);
         
@@ -27,7 +27,6 @@ namespace api_proyecto_web.Modelos
             this.Fecha_compra = DateTime.Now;
             this.Fecha_entrega = DateTime.Now.AddDays(3);
             this.Estado_compra = EstadoCompra.Carro_de_compra;
-            this.cupon = new Cupon();
         }
 
     }

@@ -14,27 +14,14 @@ namespace api_proyecto_web.Servicios.Implementacion
         static connnecionBlob conBlob = new connnecionBlob();
 
         public static Usuario UsuarioIniciado = UsuarioIniciado !=null ? UsuarioIniciado : new Usuario() ;
-        public void CambiarContraseña(string contraseña_antigua, string Contraseña) //Metodo que cambia la contraseña del usuario que se encuentre iniciado
-        {
-            //Query que valida si existe un usuario con la el corrreo y la contraseña señalada
-            string query1 = string.Format("select * FROM usuario where email ='"+UsuarioIniciado.Email+"'and contraseña ='"+contraseña_antigua+ "'");
-            DataTable dt1 = ComprasServicios.db.Execute(query1);
-            if (dt1.Rows.Count > 0) //valida que exista registro  en la base de datos
-            {
-                //Actualizacion de contraseña en la base de datos
-                string Query2 = "Update Usuario set contraseña ='"+Contraseña+"' where email = '"+UsuarioIniciado.Email+ "' ";
-                DataTable dt2 = ComprasServicios.db.Execute(Query2);
-                UsuarioIniciado.Contraseña = Contraseña;
-                ComprasServicios.db.Execute("commit");
-            }
-        }
+        
         public Usuario informacionUsuario(int id)//metodo que entrega la informacion del usuario que se encuentre iniciado 
         {
             Usuario Datos = new Usuario();//variable que entregara los datos al usuario iniciado
             //quey que valida si existe algun usuario con la contraseña y correo ingresados
             string Query = string.Format("SELECT id_usuario AS id_usuario, nombre AS nombre , appaterno||' '||apmaterno AS apellidos, id_tipo_usuario as tipo_usuario, telefono as telefono, email as email, direccion as direccion, comuna as comuna, contraseña as contraseña FROM usuario where id_usuario =" + id);
             DataTable dt1 = ComprasServicios.db.Execute(Query);
-            string query_imagen = "select id_imagen as id_imagen, url_imagen as url, id_imagen as id_imagen, nombre as nombre from imagen where estado = 'T' and id_usuario = " + Convert.ToInt32(dt1.Rows[0]["id_usuario"]);
+            string query_imagen = "select id_imagen as id_imagen, url_imagen as url, id_imagen as id_imagen, nombre as nombre from imagen where estado = True and id_usuario = " + Convert.ToInt32(dt1.Rows[0]["id_usuario"]);
             DataTable dt_imagen = ComprasServicios.db.Execute(query_imagen);
             if (dt1.Rows.Count > 0)//validador de que exista informacion
             {
@@ -48,7 +35,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 Datos.Email = dt1.Rows[0]["email"].ToString();
                 Datos.Direccion = dt1.Rows[0]["direccion"].ToString();
                 Datos.Comuna = dt1.Rows[0]["comuna"].ToString();
-                Datos.Contraseña = dt1.Rows[0]["contraseña"].ToString();
 
             
 
@@ -70,20 +56,10 @@ namespace api_proyecto_web.Servicios.Implementacion
             //quey que valida si existe algun usuario con la contraseña y correo ingresados
             string Query = string.Format("SELECT id_usuario AS id_usuario, nombre AS nombre , appaterno||' '||apmaterno AS apellidos, id_tipo_usuario as tipo_usuario, telefono as telefono, email as email, direccion as direccion, comuna as comuna, contraseña as contraseña FROM usuario where email ='"+correo +"'and contraseña ='"+contraseña+ "' and id_tipo_usuario = 1");
             DataTable dt1 = ComprasServicios.db.Execute(Query);
-            string query_imagen = "select id_imagen as id_imagen, url_imagen as url, id_imagen as id_imagen, nombre as nombre from imagen where estado = 'T' and id_usuario = " + Convert.ToInt32(dt1.Rows[0]["id_usuario"]);
-            DataTable dt_imagen = ComprasServicios.db.Execute(query_imagen);
             if (dt1.Rows.Count > 0)//validador de que exista informacion
             {
                 //ingreso de informacion en el objeto datos
                 Datos.Id            = Convert.ToInt32(dt1.Rows[0]["id_usuario"]);
-                Datos.Nombre        = dt1.Rows[0]["nombre"].ToString();
-                Datos.Apellido      = dt1.Rows[0]["apellidos"].ToString();
-                Datos.tipo_Usuario  = (Tipo_usuario)Convert.ToInt32(dt1.Rows[0]["tipo_usuario"]);
-                Datos.telefono      = dt1.Rows[0]["telefono"].ToString();
-                Datos.Email         = dt1.Rows[0]["email"].ToString();
-                Datos.Direccion     = dt1.Rows[0]["direccion"].ToString();
-                Datos.Comuna        = dt1.Rows[0]["comuna"].ToString();
-                Datos.Contraseña    = dt1.Rows[0]["contraseña"].ToString();
 
                 return Datos.Id;
 
@@ -111,12 +87,12 @@ namespace api_proyecto_web.Servicios.Implementacion
                 primer_apellido = apellidos;
             }
             //ingreso de datos del usuario registrado a la base de datos
-            string Obtencion_id = "select SQ_id_usuario.NEXTVAL as id from dual";
+            string Obtencion_id = "select id_usuario() as id";
             DataTable id_tb = ComprasServicios.db.Execute(Obtencion_id);
             string QueryCreacionUsuario = "INSERT INTO usuario VALUES ("+ id_tb.Rows[0]["id"] +",'" + nombre + "' ,'" + primer_apellido + "','" + segundo_apellido + "',1,'" + telefono + "','" + email + "','" + direccion + "','" + comuna + "','" + contraseña + "')";
             ComprasServicios.db.Execute(QueryCreacionUsuario);
             ComprasServicios.db.Execute("commit");
-            string Query_imagen_us = "insert into imagen values ( sq_imagenes.nextval ,'https://upgradeimagens.blob.core.windows.net/imagenusuario/26-06-2023 19:47:33.png',1,"+id_tb.Rows[0]["id"]+",null,to_char(" + id_tb.Rows[0]["id"] + "),'T')";
+            string Query_imagen_us = "insert into imagen values ( id_imagen(),'https://img.freepik.com/vector-premium/linda-imagen-vectorial-dibujos-animados-estrellas-brillantes-amarillas_423491-67.jpg?w=2000',1," + id_tb.Rows[0]["id"]+",null,to_char(" + id_tb.Rows[0]["id"] + "),'True')";
             ComprasServicios.db.Execute(Query_imagen_us);
             ComprasServicios.db.Execute("commit");
             int id = Convert.ToInt32(id_tb.Rows[0]["id"]);
@@ -155,7 +131,7 @@ namespace api_proyecto_web.Servicios.Implementacion
             {
                 primer_apellido = apellido_str;
             }
-            //valida si el hay algun usuario que tenga el mismo correo
+            //valida si  hay algun usuario que tenga el mismo correo y telefono
             string queryValidarUsuario = "select * from usuario where email = '"+email_str+"' or telefono = '"+telefono_str+"'";
             DataTable dtValidadorUsuario = new DataTable();
             //esta query valida si el usuario mantiene el mismo correo o no
@@ -175,10 +151,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 Console.WriteLine("No se ingresaron los datos de usuario ya que hay datos repetidos");
             }
         }
-        public void cerrarSesion() //cierra sesion del usuario que se encuentre iniciado 
-        {
-            UsuarioIniciado = new Usuario();
-        }
         public void cambiofoto(IFormFile imagen, int id)
         {
             string url;
@@ -191,10 +163,10 @@ namespace api_proyecto_web.Servicios.Implementacion
                 url = conBlob.IngresoImagenUsuario(imagen);
                 if (url != null)
                 {
-                    string query_id_imagen = "select sq_imagenes.NEXTVAL as id from dual";
+                    string query_id_imagen = "select id_imagen() as id ";
                     DataTable dt_id = ComprasServicios.db.Execute(query_id_imagen);
-                    string query_desactivar_imagen = "update imagen set estado = 'F' where id_usuario = " + id;
-                    string query_cambio_foto = "insert into imagen values (" + dt_id.Rows[0]["id"] + ",'" + url + "',1," + id + ",null,'cambio de foto','T')";
+                    string query_desactivar_imagen = "update imagen set estado = False where id_usuario = " + id;
+                    string query_cambio_foto = "insert into imagen values (" + dt_id.Rows[0]["id"] + ",'" + url + "',1," + id + ",null,'cambio de foto',True)";
                     ComprasServicios.db.Execute(query_desactivar_imagen);
                     ComprasServicios.db.Execute(query_cambio_foto);
                     ComprasServicios.db.Execute("commit");
@@ -206,28 +178,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 }
             }
         }
-        public void Registro_usuario_invitado(Usuario usu)
-        {
-            string apellidos = usu.Apellido;
-            string primer_apellido = "";
-            string segundo_apellido = "";
-            int indice_espacio = (apellidos.IndexOf(" "));
-            int largoApellido = (apellidos.Length);
-
-            if (indice_espacio > 0)//validador para saber si tiene uno o dos apellidos
-            {
-                primer_apellido = apellidos.Substring(0, (indice_espacio));
-                segundo_apellido = apellidos.Substring((indice_espacio + 1), (largoApellido - (indice_espacio + 1)));
-            }
-            else//en el caso de tener un apellido setea el apellido paterno 
-            {
-                primer_apellido = apellidos;
-            }
-            string query_ingreso_usuario = "update usuario set nombre = '" +usu.Nombre+ "' , appaterno = '" + primer_apellido+ "' , apmaterno = '" +segundo_apellido+"' , id_tipo_usuario = 1 , telefono = '" +usu.telefono+"' ,email = '"+usu.Email+"' ,direccion = '"+usu.Direccion+"' ,comuna = '"+usu.Comuna+"' ,contraseña = '"+usu.Contraseña+"' where id_usuario = "+ usu.Id;
-            ComprasServicios.db.Execute(query_ingreso_usuario);
-            ComprasServicios.db.Execute("commit");
-        }
-
         public int inicio_trabajador(string correo, string contraseña)
         {
             string query = "select id_usuario from usuario  where email = '" + correo + "' and contraseña = '" + contraseña +"' and id_tipo_usuario = 2 ";

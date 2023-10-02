@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using Oracle.ManagedDataAccess.Client;
+using MySql.Data.MySqlClient;
 
 namespace api_proyecto_web.DBConText
 {
@@ -7,44 +7,40 @@ namespace api_proyecto_web.DBConText
     {
         private string connection_str = string.Empty;
 
-        string ConnectionString = string.Empty;
-        public Connection()
-        {
-            OracleConfiguration.TnsAdmin = @"Wallet";
-            OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
-            var constructor = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json").Build();
-            connection_str = constructor.GetSection("ConnectionStrings:oracle").Value;
-            ConnectionString = connection_str;
-        }
+        static string Servidor = "138.128.182.130";
+        static string DB = "wan723_plantas";
+        static string Usuario = "wan723_admin_plantas";
+        static string Contrasena = "Plantas123.,";
+        static string Puerto = "3306";
+
+        string Coneccionstring = "server="+  Servidor +";"+"port="+Puerto+";"+"user id="+Usuario+";"+"password="+Contrasena+";"+"database="+ DB+";";
+        
+
 
         public DataTable Execute(string SQL)
         {
-            using (OracleConnection con = new OracleConnection(this.ConnectionString))
+            using (MySqlConnection con = new MySqlConnection(Coneccionstring))
             {
-                using (OracleCommand cmd = con.CreateCommand())
+                using (MySqlCommand cmd = con.CreateCommand())
                 {
                     try
                     {
+                        
                         con.Open();
-                        Console.WriteLine("Base de datos connectada con exito");
-                        Console.WriteLine();
-
                         cmd.CommandText = SQL;
-                        OracleDataReader reader = cmd.ExecuteReader();
+                        MySqlDataReader dr = cmd.ExecuteReader();
                         var dt = new DataTable();
-                        dt.Load(reader);
+                        dt.Load(dr);
                         con.Close();
                         Console.WriteLine("Select ejecutado");
                         return dt;
 
                     }
-                    catch (Exception ex)
+                    catch (MySqlException ex)
                     {
                         Console.WriteLine(ex.Message);
                         Console.WriteLine("No se vinculo la con la base de datos");
                     }
-                    con.Close();
                     return new DataTable();
                 }
             }

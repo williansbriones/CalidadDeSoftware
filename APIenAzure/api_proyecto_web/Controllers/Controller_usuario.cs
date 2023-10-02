@@ -1,4 +1,5 @@
-﻿using api_proyecto_web.Modelos;
+﻿using api_proyecto_web.DBConText;
+using api_proyecto_web.Modelos;
 using api_proyecto_web.Servicios;
 using api_proyecto_web.Servicios.Implementacion;
 using Microsoft.AspNetCore.Mvc;
@@ -14,14 +15,16 @@ namespace api_proyecto_web.Controllers
         Servicios.IcrudUsuario usuario = new Servicios.Implementacion.UsuarioServicio();
 
 
-        // GET: api/Controller_usuario/InformacionUsuario
+        // GET: api/Controller_usuario/InformacionUsuario}
+        //terminado
         [HttpGet("InformacionUsuario")] //controller lo unico que realiza en la obtencion de datos
-        public Usuario Get(int id)
+        public Usuario Get([FromForm]int id)
         {
             return usuario.informacionUsuario(id);
         }
 
         // POST api/Controller_usuario/Inicio_Sesion
+        //terminado
         [HttpPost("Inicio_Sesion")]
         public ObjectResult Post([FromBody]Usuario datos)
         {
@@ -37,6 +40,7 @@ namespace api_proyecto_web.Controllers
         }
 
         // POST api/Controller_usuario/CrearUsuario
+        //Terminado
         [HttpPost("CrearUsuario")]
         public int CrearUsuario([FromBody]Usuario Usu)
         {
@@ -50,32 +54,8 @@ namespace api_proyecto_web.Controllers
             int id = usuario.CrearUsuario(nombre, apellidos, telefono, email, direccion, comuna, contraseña);
             return id;
         }
-        // POST api/Controller_usuario/Registrousuarioinvitado
-        [HttpPost("Registrousuarioinvitado")]
-        public ObjectResult Registro_usuario_invitado([FromBody]Usuario usu)
-        {
-            try
-            {
-                usuario.Registro_usuario_invitado(usu);
-                return Ok("ok");
-            }catch (Exception ex) 
-            { 
-                return BadRequest(ex); 
-            }
-        }
-        //POST api/Controller_usuario/Cerrar_sesion
-        [HttpPost("Cerrar_sesion")]
-        public void CerrarSesion()
-        {
-            usuario.cerrarSesion();
-        }
-        // PUT api/Controller_usuario/CambioContraseña/{contraseña_antigua}/{contraseña}
-        [HttpPut("CambioContraseña")]
-        public void Put(string contraseña_antigua, string contraseña)
-        {
-            usuario.CambiarContraseña(contraseña_antigua, contraseña);
-        }
         //PUT api/Controller_usuario/EditarInformacion
+        //terminado
         [HttpPut("EditarInformacion")]
         public ObjectResult EditarUsuario([FromBody]Usuario usu)
         {
@@ -96,13 +76,14 @@ namespace api_proyecto_web.Controllers
             }
         }
         // api/Controller_usuario/CambioDeFoto
+        //Terminado
         [HttpPost("CambioDeFoto")]
-        public void cambioImagen([FromForm]int a, [FromForm] IFormFile e)
+        public void cambioImagen([FromForm]int id, [FromForm] IFormFile imagen)
         {
-            
-            usuario.cambiofoto(e, a);
+            usuario.cambiofoto(imagen, id);
         }
         // api/Controller_usuario/inicio_trabajador
+        //
         [HttpPost("inicio_trabajador")]
         public int inicio_trabajador  ([FromBody] Usuario us)
         {
@@ -113,4 +94,5 @@ namespace api_proyecto_web.Controllers
             
         }
     }
+   
 }

@@ -34,13 +34,7 @@ namespace api_proyecto_web.Servicios.Implementacion
                         id_compra = Convert.ToInt32(dr["id_compra"]),
                         Fecha_entrega = DateTime.ParseExact(dr["fecha_termino"].ToString(),"dd/MM/yyyy",provider),
                         Fecha_compra = DateTime.ParseExact(dr["fecha_inicio"].ToString(),"dd/MM/yyyy",provider),
-                        cupon = new Cupon{
-                            Id = Convert.ToInt32(dr["id_cupon"]),
-                            Cantidad_limite = Convert.ToInt32(dr["cantidad_uso"]),
-                            Codigo = dr["condigo_desc"].ToString(),
-                            CantidadDesuento = Convert.ToInt32(dr["descuento_cupon"]),
-                            Nombre = dr["nombre_cupon"].ToString()
-                        }
+                        
 
                     });
                 }
@@ -95,14 +89,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 }
                 CultureInfo provider = new CultureInfo("es-CL");
                 //mas ingformacion de la compra
-                CompraIndividual.cupon.Id = Convert.ToInt32(dt.Rows[0]["id_cupon"]);
-                CompraIndividual.cupon.Nombre = dt.Rows[0]["nombre_cupon"].ToString();
-                CompraIndividual.cupon.CantidadDesuento = Convert.ToInt32(dt.Rows[0]["descuento_cupon"]);
-                CompraIndividual.cupon.Codigo = dt.Rows[0]["condigo_desc"].ToString();
-                CompraIndividual.cupon.Cantidad_limite = Convert.ToInt32(dt.Rows[0]["cantidad_uso"]);
-                CompraIndividual.cupon.FechaInicio = DateTime.ParseExact(dt.Rows[0]["fecha_inicio"].ToString(), "dd/MM/yyyy", provider);
-                CompraIndividual.cupon.FechaTermino = DateTime.ParseExact(dt.Rows[0]["fecha_termino"].ToString(), "dd/MM/yyyy", provider);
-
                 CompraIndividual.Estado_compra = (EstadoCompra)Convert.ToInt32(dt.Rows[0]["id_estado_compra"]);
             }
             //en resumen compra(tiene) ----> listaProductos(tiene muchos) ----> productos
@@ -132,14 +118,7 @@ namespace api_proyecto_web.Servicios.Implementacion
                         id_compra = Convert.ToInt32(dr["id_compra"]),
                         Fecha_entrega = DateTime.ParseExact(dt_fecha_entrega.Rows[0]["fecha_entrega"].ToString(),"dd/MM/yyyy",provider),
                         Fecha_compra = DateTime.ParseExact(dt_fecha_entrega.Rows[0]["fecha_compra"].ToString(),"dd/MM/yyyy",provider),
-                        cupon = new Cupon
-                        {
-                            Id = Convert.ToInt32(dr["id_cupon"]),
-                            Cantidad_limite = Convert.ToInt32(dr["cantidad_uso"]),
-                            Codigo = dr["condigo_desc"].ToString(),
-                            CantidadDesuento = Convert.ToInt32(dr["descuento_cupon"]),
-                            Nombre = dr["nombre_cupon"].ToString()
-                        }
+                        
 
                     });
                 }
@@ -294,11 +273,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 //relleno de informacion la compra del usuario
                 CarroDeCompra.id_compra = Convert.ToInt32(dt_obtener_compra.Rows[0]["id_compra"]);
                 CarroDeCompra.id_usuario = id_usuario;
-                CarroDeCompra.cupon.Id = Convert.ToInt32(dt_obtener_compra.Rows[0]["id_cupon"]);
-                CarroDeCompra.cupon.Nombre = dt_obtener_compra.Rows[0]["nombre_cupon"].ToString();
-                CarroDeCompra.cupon.CantidadDesuento = Convert.ToInt32(dt_obtener_compra.Rows[0]["descuento_cupon"]);
-                CarroDeCompra.cupon.Codigo = dt_obtener_compra.Rows[0]["condigo_desc"].ToString();
-                CarroDeCompra.cupon.Cantidad_limite = Convert.ToInt32(dt_obtener_compra.Rows[0]["cantidad_uso"]);
                 CarroDeCompra.Estado_compra = (EstadoCompra)Convert.ToInt32(dt_obtener_compra.Rows[0]["id_estado_compra"]);
             }
             else // genera carro de compras en caso que el usuario no tenga
@@ -310,11 +284,6 @@ namespace api_proyecto_web.Servicios.Implementacion
 
                 CarroDeCompra.id_compra = Convert.ToInt32(dt_creacion_compra.Rows[0]["id_compra"]);
                 CarroDeCompra.id_usuario = id_usuario;
-                CarroDeCompra.cupon.Id = Convert.ToInt32(dt_creacion_compra.Rows[0]["id_cupon"]);
-                CarroDeCompra.cupon.Nombre = dt_creacion_compra.Rows[0]["nombre_cupon"].ToString();
-                CarroDeCompra.cupon.CantidadDesuento = Convert.ToInt32(dt_creacion_compra.Rows[0]["descuento_cupon"]);
-                CarroDeCompra.cupon.Codigo = dt_creacion_compra.Rows[0]["condigo_desc"].ToString();
-                CarroDeCompra.cupon.Cantidad_limite = Convert.ToInt32(dt_creacion_compra.Rows[0]["cantidad_uso"]);
                 CarroDeCompra.Estado_compra = (EstadoCompra)Convert.ToInt32(dt_creacion_compra.Rows[0]["id_estado_compra"]);
             }
             //obtiene los productos que contenga las compras
@@ -398,11 +367,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                 //ingreso de informacion al carro de compras 
                 CarroDeCompra.id_compra = Convert.ToInt32(dt_obtener_compra.Rows[0]["id_compra"]);
                 CarroDeCompra.id_usuario = id;
-                CarroDeCompra.cupon.Id = Convert.ToInt32(dt_obtener_compra.Rows[0]["id_cupon"]);
-                CarroDeCompra.cupon.Nombre = dt_obtener_compra.Rows[0]["nombre_cupon"].ToString();
-                CarroDeCompra.cupon.CantidadDesuento = Convert.ToInt32(dt_obtener_compra.Rows[0]["descuento_cupon"]);
-                CarroDeCompra.cupon.Codigo = dt_obtener_compra.Rows[0]["condigo_desc"].ToString();
-                CarroDeCompra.cupon.Cantidad_limite = Convert.ToInt32(dt_obtener_compra.Rows[0]["cantidad_uso"]);
                 CarroDeCompra.Estado_compra = (EstadoCompra)Convert.ToInt32(dt_obtener_compra.Rows[0]["id_estado_compra"]);
             }
             //obtiene informacion de los productos por de las compras asociadas al usuario iniciado
@@ -591,13 +555,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                         cantidad = Convert.ToInt32(dr["cantidad_producto"])
                     });
                 }
-                listaCompras.cupon.Id = Convert.ToInt32(dt.Rows[0]["id_cupon"]);
-                listaCompras.cupon.Nombre = dt.Rows[0]["nombre_cupon"].ToString();
-                listaCompras.cupon.CantidadDesuento = Convert.ToInt32(dt.Rows[0]["descuento_cupon"]);
-                listaCompras.cupon.Codigo = dt.Rows[0]["condigo_desc"].ToString();
-                listaCompras.cupon.Cantidad_limite = Convert.ToInt32(dt.Rows[0]["cantidad_uso"]);
-                listaCompras.cupon.FechaInicio = DateTime.Parse(dt.Rows[0]["fecha_inicio"].ToString());
-                listaCompras.cupon.FechaTermino = DateTime.Parse(dt.Rows[0]["fecha_termino"].ToString());
 
                 listaCompras.Estado_compra = (EstadoCompra)Convert.ToInt32(dt.Rows[0]["id_estado_compra"]);
             }

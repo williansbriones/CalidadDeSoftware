@@ -13,6 +13,7 @@ namespace api_proyecto_web.Controllers
     {
         IcrudProductos servicioProducto = new ProductoServicios();
         // GET: api/Controller_producto/InformacionProducto
+        //Terminado
         [HttpGet("InformacionProducto/{id}")]
         public ObjectResult GetProducto(int id)
         {
@@ -27,6 +28,7 @@ namespace api_proyecto_web.Controllers
         }
 
         // POST api/Controller_producto/GenerarProducto
+        //Terminado
         [HttpPost("GenerarProducto")]
         public ObjectResult PostProducto([FromForm] int tipo_Producto, [FromForm] string nombre, [FromForm] string caracteristicas, [FromForm] int precio, [FromForm] IFormFile imagen1, [FromForm] IFormFile imagen2, [FromForm] IFormFile imagen3, [FromForm] IFormFile imagen4, [FromForm] IFormFile imagen5)
         {
@@ -40,24 +42,8 @@ namespace api_proyecto_web.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        [HttpDelete("{id}")]
-        public IActionResult EliminarProducto(int id)
-        {
-            // Verificar si el producto existe en la base de datos
-            var producto = servicioProducto.InformacionProducto(id);
-            if (producto == null)
-            {
-                return NotFound();
-            }
-
-            // Eliminar el producto
-            // implementar la lógica para eliminar el producto en tu base de datos
-            
-
-            return Ok();
-        }
-        // GET: api/Controller_Producto/
+        // GET: api/Controller_Producto/ObtenerTodosLosProductos
+        //Terminado
         [HttpGet("ObtenerTodosLosProductos") ]
         public ObjectResult ObtenerTodosLosProductos()
         {
