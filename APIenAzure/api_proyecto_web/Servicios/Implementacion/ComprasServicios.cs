@@ -1,9 +1,12 @@
 ﻿using api_proyecto_web.DBConText;
 using api_proyecto_web.Modelos;
 using api_proyecto_web.Modelos.@enum;
+using Google.Protobuf.WellKnownTypes;
 using System.Data;
 using System.Globalization;
 using System.Runtime.Serialization.Formatters;
+using System.Security.Policy;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace api_proyecto_web.Servicios.Implementacion
 {
@@ -35,9 +38,8 @@ namespace api_proyecto_web.Servicios.Implementacion
                         id_compra = Convert.ToInt32(dr["id_compra"]),
                         Fecha_entrega = DateTime.ParseExact(dr["fecha_termino"].ToString(),"dd/MM/yyyy",provider),
                         Fecha_compra = DateTime.ParseExact(dr["fecha_inicio"].ToString(),"dd/MM/yyyy",provider),
-                        
-
                     });
+                    
                 }
                 foreach (compras com in listaCompras) //ingreso de productos a las compras individuales 
                 {
@@ -50,7 +52,9 @@ namespace api_proyecto_web.Servicios.Implementacion
                                                tipo_producto = (Tipo_Producto)Convert.ToInt32(dr["id_tipo_producto"]),
                                                nombre = dr["nombre_producto"].ToString(),
                                                caracteristicas = dr["caracteristicas"].ToString(),
-                                               precio = Convert.ToInt32(dr["precio"])
+                                               precio = Convert.ToInt32(dr["precio"]),
+                                               imagen1 = new imagen { URL = UrlImagen(Convert.ToInt32(dr["id_producto"])) }
+
                                            }
                                            ).ToList();
                 }
@@ -440,5 +444,17 @@ namespace api_proyecto_web.Servicios.Implementacion
 
             return listaCompras;
         }
+
+        public string UrlImagen(int id_producto)
+        {
+            string Url = string.Empty;
+            string QueryImagenProucto = "select url_imagen as url from imagen where id_producto = " + id_producto + " limit 1";
+            DataTable ImagenProducto = db.Execute(QueryImagenProucto);
+            Url = ImagenProducto.Rows[0]["url"].ToString();
+
+            return Url;
+        }
+
+
     }
 }
