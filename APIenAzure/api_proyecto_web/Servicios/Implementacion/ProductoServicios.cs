@@ -299,7 +299,6 @@ namespace api_proyecto_web.Servicios.Implementacion
                     nombre = row["Nombre"].ToString(),
                     caracteristicas = row["caracteristicas"].ToString(),
                     precio = Convert.ToInt32(row["precio"]),
-                    estado = row["estado"].ToString() == "T" ? true : false,
                     tipo_producto = (Tipo_Producto)Convert.ToInt32(row["id_tipo_producto"])
 
                 });
@@ -307,7 +306,7 @@ namespace api_proyecto_web.Servicios.Implementacion
 
             foreach (Productos produc in products)
             {
-                string query_imagenes = "select id_imagen as id_img,id_tipo_imagen as tipo_img,i.nombre as nombre,url_imagen as url from producto p join imagen i on (p.id_producto = i.id_producto) where p.id_producto = " + produc.Id + " and i.estado = 'T'";
+                string query_imagenes = "select id_imagen as id_img,id_tipo_imagen as tipo_img,i.nombre as nombre,url_imagen as url from producto p join imagen i on (p.id_producto = i.id_producto) where p.id_producto = " + produc.Id + " and i.estado = True";
                 DataTable dt_imagenes = ComprasServicios.db.Execute(query_imagenes);
                 if (dt_imagenes.Rows.Count > 0)
                 {

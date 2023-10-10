@@ -29,7 +29,8 @@ $(document).ready(function () {
         type: "POST",
         url: "https://localhost:7294/api/Controller_usuario/Inicio_Sesion",
         data: JSON.stringify(Datos),
-        contentType: 'application/json; charset=utf-8'
+        contentType: 'application/json; charset=utf-8',
+        async: false
 
      }).then(function (Resupuesta){
         let id = Resupuesta;

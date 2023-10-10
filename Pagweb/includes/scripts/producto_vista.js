@@ -102,14 +102,14 @@ $(document).ready(function () {
 
 $("#boton-añadir_carrito").click(function () {
     let id_usuario = localStorage.getItem("Usuario_iniciado");
-    if(localStorage.getItem("Usuario_iniciado")== undefined ){
+    if(localStorage.getItem("Usuario_iniciado")== undefined &&  localStorage.getItem("Usuario_iniciado")== null){
         id_usuario = 0;
     }
-    id_producto = 3
     let data = JSON.stringify({"id_producto": id, "cantidad":1,"id":id_usuario})
+    console.log(data);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_compras/ingreso_Producto",
+        url: "https://localhost:7294/api/ControllerCompra/ingreso_Producto",
         data: data,
         contentType: 'application/json; charset=utf-8',
         async: true,

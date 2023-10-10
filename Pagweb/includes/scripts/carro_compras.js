@@ -6,10 +6,18 @@ $(document).ready(function () {
         style: 'currency',
         currency: 'CLP'
     });
+
+    var form = new FormData();
+    let id_us = localStorage.getItem("Usuario_iniciado");
+    form.append("Id_usuario", id_us);
     $.ajax({
         type: "GET",
-        url: "https://localhost:7294/api/Controller_compras/CarroDeCompra",
-        data: {'id': localStorage.getItem("Usuario_iniciado")},
+        url: "https://localhost:7294/api/ControllerCompra/CarrodeCompra/"+id_us,
+        timeout: 0,
+        processData: false,
+        contentType: false,
+        contentType: 'application/json; charset=utf-8',
+        data: {"Id_usuario": id_us},
         async: true,
         success: function (response) {
             console.log(response);
@@ -63,7 +71,7 @@ $(document).ready(function () {
                 console.log(id_cliente);
                 $.ajax({
                     type: "POST",
-                    url: "https://localhost:7294/api/Controller_compras/ingreso_Producto",
+                    url: "https://localhost:7294/api/ControllerCompra/ingreso_Producto",
                     data: JSON.stringify({"id_producto": id, "cantidad":1,"id":id_cliente}),
                     contentType: 'application/json; charset=utf-8',
                     async: true,
@@ -84,7 +92,7 @@ $(document).ready(function () {
                 let datos_menus = {"id_producto": id_producto, "cantidad":1,"id":id_cliente}
                 $.ajax({
                     type: "PUT",
-                    url: "https://localhost:7294/api/Controller_compras/EliminarProducto",
+                    url: "https://localhost:7294/api/ControllerCompra/EliminarProducto",
                     data: JSON.stringify(datos_menus),
                     contentType: 'application/json; charset=utf-8',
                     async: true,
@@ -115,7 +123,7 @@ $("#boton-cupon").click(function () {
         let Cupon_json = {"id_compra":id_compra,"cupon": cupon}
         $.ajax({
             type: "Post",
-            url: "https://localhost:7294/api/Controller_compras/IngresoDeCupon",
+            url: "https://localhost:7294/api/Controllercompras/IngresoDeCupon",
             data: JSON.stringify(Cupon_json),
             contentType: 'application/json; charset=utf-8',
             async:  true,
@@ -155,7 +163,7 @@ $("#pago_credito").click(function () {
     compra = {"id_usuario": localStorage.getItem("Usuario_iniciado"), "id_compra":id_compra};
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_compras/ConfimacionDeCompra",
+        url: "https://localhost:7294/api/ControllerCompra/ConfimacionDeCompra",
         data: JSON.stringify(compra),
         contentType: 'application/json; charset=utf-8',
         async:  true,

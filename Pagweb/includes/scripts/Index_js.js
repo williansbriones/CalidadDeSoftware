@@ -7,9 +7,8 @@ $(document).ready(function () {
         let id_usuario_iniciado = localStorage.getItem("Usuario_iniciado");
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario",
+            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
             async: true,
-            data: {'id': id_usuario_iniciado},
             contentType: 'application/json; charset=utf-8',
             success:function(data){
                 console.log(data);

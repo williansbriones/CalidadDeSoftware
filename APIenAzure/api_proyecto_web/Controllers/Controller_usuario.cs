@@ -17,8 +17,8 @@ namespace api_proyecto_web.Controllers
 
         // GET: api/Controller_usuario/InformacionUsuario}
         //terminado
-        [HttpGet("InformacionUsuario")] //controller lo unico que realiza en la obtencion de datos
-        public Usuario Get([FromForm]int id)
+        [HttpGet("InformacionUsuario/{id}")] //controller lo unico que realiza en la obtencion de datos
+        public Usuario Get(int id)
         {
             return usuario.informacionUsuario(id);
         }

@@ -7,9 +7,8 @@ $(document).ready(function () {
         let id_usuario_iniciado = localStorage.getItem("Usuario_iniciado");
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario",
-            async: true,
-            data: {'id': id_usuario_iniciado},
+            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
+            async: false,
             contentType: 'application/json; charset=utf-8',
             success:function(data){
                 console.log(data);
@@ -100,7 +99,7 @@ $(document).ready(function () {
                                     url: "https://localhost:7294/api/Controller_usuario/Registrousuarioinvitado",
                                     data: Datos_nuevos,
                                     contentType: 'application/json; charset=utf-8',
-                                    async: true,
+                                    async: false,
                                     success: function (response) {
                                         console.log(response)
                                         setTimeout(function(){
@@ -227,8 +226,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_compras/OrdenesDeCompraClienteIniciado",
-            data: {'id': id_usuario_iniciado},
+            url: "https://localhost:7294/api/ControllerCompra/Ordenes_de_clientes/"+id_usuario_iniciado,
             async: true,
             success: function (compras) {
                 compras.forEach(com => {
@@ -410,7 +408,7 @@ $("#editar_info").click(function () {
         async: true,
         success: function (response) {
             console.log(response);
-            location.reload();
+            
             
         },error:function(error){
             console.log("error inesperado");

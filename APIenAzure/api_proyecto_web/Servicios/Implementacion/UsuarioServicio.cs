@@ -92,7 +92,7 @@ namespace api_proyecto_web.Servicios.Implementacion
             string QueryCreacionUsuario = "INSERT INTO usuario VALUES ("+ id_tb.Rows[0]["id"] +",'" + nombre + "' ,'" + primer_apellido + "','" + segundo_apellido + "',1,'" + telefono + "','" + email + "','" + direccion + "','" + comuna + "','" + contraseña + "')";
             ComprasServicios.db.Execute(QueryCreacionUsuario);
             ComprasServicios.db.Execute("commit");
-            string Query_imagen_us = "insert into imagen values ( id_imagen(),'https://img.freepik.com/vector-premium/linda-imagen-vectorial-dibujos-animados-estrellas-brillantes-amarillas_423491-67.jpg?w=2000',1," + id_tb.Rows[0]["id"]+",null,to_char(" + id_tb.Rows[0]["id"] + "),'True')";
+            string Query_imagen_us = "insert into imagen values ( id_imagen(),'https://img.freepik.com/vector-premium/linda-imagen-vectorial-dibujos-animados-estrellas-brillantes-amarillas_423491-67.jpg?w=2000',1," + id_tb.Rows[0]["id"]+",null, 'cambio de imagen' , True)";
             ComprasServicios.db.Execute(Query_imagen_us);
             ComprasServicios.db.Execute("commit");
             int id = Convert.ToInt32(id_tb.Rows[0]["id"]);

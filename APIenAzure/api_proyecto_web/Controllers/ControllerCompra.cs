@@ -15,13 +15,12 @@ namespace api_proyecto_web.Controllers
         IcrudCompras<compras> servicio_compras = new ComprasServicios();
 
         // GET: api/<ControllerCompra>
-        [HttpGet("CarrodeCompra")]
-        public ObjectResult CarrodeCompra([FromForm] int id_compra)
+        [HttpGet("CarrodeCompra/{Id_usuario}")]
+        public ObjectResult CarrodeCompra(int Id_usuario)
         {
-            int id = id_compra;
             try
             {
-                return Ok(servicio_compras.BusquedaCarroCompras(id));
+                return Ok(servicio_compras.BusquedaCarroCompras(Id_usuario));
             }
             catch (Exception ex)
             {

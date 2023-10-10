@@ -21,7 +21,7 @@ namespace api_proyecto_web.Servicios.Implementacion
             //obtencion de informacion para rellenar  con las lista y las compras para entregar la informacion de las compras
             IList<compras> listaCompras = new List<compras>();
             string Query = String.Format("select dp.cantidad as cantidad_producto, c.id_compra as id_compra, p.id_producto as id_producto, c.id_usuario as id_usuario, p.id_tipo_producto as id_tipo_producto, p.nombre as nombre_producto, p.caracteristicas as caracteristicas, p.precio as precio from compra c join detalle_compra dp on (dp.id_compra = c.id_compra) join producto p on (p.id_producto = dp.id_producto) LEFT JOIN cupon cu on (c.id_cupon = cu.id_cupon) where  c.id_usuario = " + id_cliente + " order by c.id_compra");
-            string Query2 = string.Format("select c.id_estado_compra as id_estado_compra, c.id_compra as id_compra, IFNULL(DATE_FORMAT(cu.fecha_compra,'%d-%m-%Y'),DATE_FORMAT(now(),'%d-%m-%Y')) as fecha_termino,IFNULL(DATE_FORMAT(cu.fecha_entrega,'%d-%m-%Y'),DATE_FORMAT(NOW(),'%d-%m-%Y')) as fecha_inicio, IFNULL(cu.cant_uso, 0) as cantidad_uso, IFNULL(cu.codigo, 'Sin codigo') as condigo_desc, IFNULL(cu.cant_descuento,0) as descuento_cupon, IFNULL(cu.nombre,'Sin cupon') as nombre_cupon, IFNULL(cu.id_cupon,0) as id_cupon from compra c LEFT JOIN cupon cu on (c.id_cupon = cu.id_cupon) where c.id_usuario = " + id_cliente);
+            string Query2 = string.Format("select c.id_estado_compra as id_estado_compra, c.id_compra as id_compra, IFNULL(DATE_FORMAT(cu.fecha_compra,'%d-%m-%Y'),DATE_FORMAT(now(),'%d-%m-%Y')) as fecha_termino,IFNULL(DATE_FORMAT(cu.fecha_entrega,'%d-%m-%Y'),DATE_FORMAT(NOW(),'%d-%m-%Y')) as fecha_inicio, IFNULL(cu.cant_uso, 0) as cantidad_uso, IFNULL(cu.codigo, 'Sin codigo') as condigo_desc, IFNULL(cu.cant_descuento,0) as descuento_cupon, IFNULL(cu.nombre,'Sin cupon') as nombre_cupon, IFNULL(cu.id_cupon,0) as id_cupon from compra c LEFT JOIN cupon cu on (c.id_cupon = cu.id_cupon) where c.id_usuario = " + id_cliente + " and c.id_estado_compra != 1");
             
             DataTable dt1 = db.Execute(Query);//ejecucion de la consulta
             DataTable dt2 = db.Execute(Query2);//ejecucion de la consulta
@@ -267,7 +267,7 @@ namespace api_proyecto_web.Servicios.Implementacion
             Usuario usuario = us.informacionUsuario(id_usuaro);
 
             //validador de que el usuario tenga sus datos bien ingresado para que el delivery se pueda realizar
-            if (id_compra != 0 & usuario.Comuna != string.Empty & usuario.Email != string.Empty & usuario.telefono != string.Empty)
+            if (id_compra != 0  & usuario.Email != string.Empty & usuario.telefono != string.Empty)
             {
                 //Querys de ingreso nueva compra en el delivery y actualizacion de el estado de la compra 
                 string QueryIngresoDelivery = "Insert into delivery values ( id_delivery(), " + id_compra + ", 'Diego Diaz','"+ usuario.Direccion+"' , '" +fechaActual.ToString("yyyy/MM/dd") + "' , '" +fechaEntrega.ToString("yyyy/MM/dd")+"')";
