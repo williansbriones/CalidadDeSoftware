@@ -7,7 +7,7 @@ $(document).ready(function () {
         let id_usuario_iniciado = localStorage.getItem("Usuario_iniciado");
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
+            url: "http://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
             async: false,
             contentType: 'application/json; charset=utf-8',
             success:function(data){
@@ -96,7 +96,7 @@ $(document).ready(function () {
                                 console.log("Validador ingreso")
                                 $.ajax({
                                     type: "POST",
-                                    url: "https://localhost:7294/api/Controller_usuario/Registrousuarioinvitado",
+                                    url: "http://localhost:7294/api/Controller_usuario/Registrousuarioinvitado",
                                     data: Datos_nuevos,
                                     contentType: 'application/json; charset=utf-8',
                                     async: false,
@@ -226,7 +226,7 @@ $(document).ready(function () {
         });
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/ControllerCompra/Ordenes_de_clientes/"+id_usuario_iniciado,
+            url: "http://localhost:7294/api/ControllerCompra/Ordenes_de_clientes/"+id_usuario_iniciado,
             async: true,
             success: function (compras) {
                 compras.forEach(com => {
@@ -358,7 +358,7 @@ $(document).ready(function () {
             console.log(formData.get("e"));
             $.ajax({
                 type: "POST",
-                url: "https://localhost:7294/api/Controller_usuario/CambioDeFoto",
+                url: "http://localhost:7294/api/Controller_usuario/CambioDeFoto",
                 processData: false,
                 contentType: false,
                 data: formData,
@@ -402,7 +402,7 @@ $("#editar_info").click(function () {
 
     $.ajax({
         type: "PUT",
-        url: "https://localhost:7294/api/Controller_usuario/EditarInformacion",
+        url: "http://localhost:7294/api/Controller_usuario/EditarInformacion",
         data: JSON.stringify(Datos_nuevos),
         contentType: 'application/json; charset=utf-8',
         async: true,

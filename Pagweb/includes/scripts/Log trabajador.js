@@ -27,7 +27,7 @@ $(document).ready(function () {
      console.log(Datos);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_usuario/inicio_trabajador",
+        url: "http://localhost:7294/api/Controller_usuario/inicio_trabajador",
         data: JSON.stringify(Datos),
         contentType: 'application/json; charset=utf-8'
 

@@ -28,7 +28,7 @@ $("#agregar").click(function () {
     formData.append("imagen5",imagen5);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_producto/GenerarProducto",
+        url: "http://localhost:7294/api/Controller_producto/GenerarProducto",
         processData: false,
         contentType: false,
         data: formData,

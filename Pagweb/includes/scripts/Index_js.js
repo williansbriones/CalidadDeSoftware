@@ -7,7 +7,7 @@ $(document).ready(function () {
         let id_usuario_iniciado = localStorage.getItem("Usuario_iniciado");
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
+            url: "http://localhost:7294/api/Controller_usuario/InformacionUsuario/"+id_usuario_iniciado,
             async: true,
             contentType: 'application/json; charset=utf-8',
             success:function(data){
@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
     $.ajax({
         type: "GET",
-        url: "https://localhost:7294/api/Controller_producto/ProductosMasivo",
+        url: "http://localhost:7294/api/Controller_producto/ProductosMasivo",
         async: true,
         success: function (response){
             console.log(response);
@@ -211,7 +211,7 @@ $("#prueba").click(function () {
     console.log(id_usuario);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_compras/ingreso_Producto",
+        url: "http://localhost:7294/api/Controller_compras/ingreso_Producto",
         data: data,
         contentType: 'application/json; charset=utf-8',
         async: true,

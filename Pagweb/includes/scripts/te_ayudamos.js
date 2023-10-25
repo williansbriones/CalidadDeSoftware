@@ -9,7 +9,7 @@ $("#enviar").click(function () {
 
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_ayuda/GenerarAyuda",
+        url: "http://localhost:7294/api/Controller_ayuda/GenerarAyuda",
         data: JSON.stringify(mensaje),
         contentType: 'application/json; charset=utf-8',
         async:  true,

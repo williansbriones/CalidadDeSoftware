@@ -26,7 +26,7 @@ $(document).ready(function() {
     // Realizar la llamada AJAX
     $.ajax({
       type: "POST",
-      url: "https://localhost:7294/api/Controller_Cupon/crear_cupon", // Actualiza la URL con tu ruta de API correcta
+      url: "http://localhost:7294/api/Controller_Cupon/crear_cupon", // Actualiza la URL con tu ruta de API correcta
       data: JSON.stringify(datos),
       contentType: 'application/json; charset=utf-8',
       success: function(response) {

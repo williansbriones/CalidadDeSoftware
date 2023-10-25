@@ -27,7 +27,7 @@ $(document).ready(function () {
      console.log(Datos);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_usuario/Inicio_Sesion",
+        url: "http://localhost:7294/api/Controller_usuario/Inicio_Sesion",
         data: JSON.stringify(Datos),
         contentType: 'application/json; charset=utf-8',
         async: false
@@ -80,7 +80,7 @@ $("#registrar_usuario").click(function () {
     console.log(Datos);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_usuario/CrearUsuario",
+        url: "http://localhost:7294/api/Controller_usuario/CrearUsuario",
         data: Datos,
         contentType: 'application/json; charset=utf-8',
         async: true, 

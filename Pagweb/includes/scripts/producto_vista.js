@@ -10,7 +10,7 @@ $(document).ready(function () {
         let id_usuario_iniciado = localStorage.getItem("Usuario_iniciado");
         $.ajax({
             type: "GET",
-            url: "https://localhost:7294/api/Controller_usuario/InformacionUsuario",
+            url: "http://localhost:7294/api/Controller_usuario/InformacionUsuario",
             async: true,
             data: {'id': id_usuario_iniciado},
             contentType: 'application/json; charset=utf-8',
@@ -39,7 +39,7 @@ $(document).ready(function () {
     console.log(id);
     $.ajax({
         type: "GET",
-        url: "https://localhost:7294/api/Controller_producto/InformacionProducto/" + id,
+        url: "http://localhost:7294/api/Controller_producto/InformacionProducto/" + id,
         success: function (response) {
             producto = response;
             console.log(producto);
@@ -109,7 +109,7 @@ $("#boton-añadir_carrito").click(function () {
     console.log(data);
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/ControllerCompra/ingreso_Producto",
+        url: "http://localhost:7294/api/ControllerCompra/ingreso_Producto",
         data: data,
         contentType: 'application/json; charset=utf-8',
         async: true,
@@ -140,7 +140,7 @@ $("#boton-comprar_ahora").click(function () {
     let data = JSON.stringify({"id_producto": id, "cantidad":1,"id":id_usuario})
     $.ajax({
         type: "POST",
-        url: "https://localhost:7294/api/Controller_compras/ingreso_Producto",
+        url: "http://localhost:7294/api/Controller_compras/ingreso_Producto",
         data: data,
         contentType: 'application/json; charset=utf-8',
         async: true,

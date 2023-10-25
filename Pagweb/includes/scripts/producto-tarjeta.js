@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.ajax({
         type: "GET",
-        url: "https://localhost:7294/api/Controller_Producto/ObtenerTodosLosProductos",
+        url: "http://localhost:7294/api/Controller_Producto/ObtenerTodosLosProductos",
         success: function (response) {
             console.log(response);
             let productos = response; // Array de productos obtenidos

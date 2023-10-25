@@ -1,5 +1,5 @@
 1) ubicarte en la siguiente carpeta => ".\APIenAzure\api_proyecto_web" (El punto significa desde la carpeta que estas ubicado)
 
-2) docker docker build -f DockerFile -t api:1 .
+2) docker build -f DockerFile -t api:1 .
 
-3) docker run --name capi -p 8080:80 api:1
+3) docker run --name capi -p 7294:80 api:1
